@@ -1,0 +1,29 @@
+
+
+USE [Contact_Information]
+GO
+
+/****** Object:  Table [dbo].[ContactInfo]    Script Date: 7/17/2018 10:09:11 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ContactInfo](
+	[ContactID] [int] IDENTITY(1,1) NOT NULL,
+	[FirsName] VARCHAR (15)  NOT NULL,
+	[LastName] VARCHAR (15)  NOT NULL,
+	[Email] VARCHAR (20)  NOT NULL,
+	[PhoneNumber] VARCHAR (10)  NOT NULL,
+	[ContactStatus] bit NOT NULL, -- 1 means Active , 0 - Inactive
+ CONSTRAINT [PK_ContactInfo] PRIMARY KEY CLUSTERED 
+(
+	[ContactID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+

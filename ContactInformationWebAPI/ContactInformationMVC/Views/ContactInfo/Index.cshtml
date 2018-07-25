@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ContactInformationMVC.Models.ContactInformationModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br/>
+<br />
+<p>
+   <a href="@Url.Action("AddOrEdit","ContactInfo")" class="btn btn-default"><i class="fa fa-plus"></i> Create New </a>
+</p>
+<br />
+<br />
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>           
+            <th>
+                @Html.DisplayNameFor(model => model.FirsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactStatus)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>        
+        <td>
+            @Html.DisplayFor(modelItem => item.FirsName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactStatus)
+        </td>
+        <td>
+            <a href="@Url.Action("AddOrEdit","ContactInfo",new { id = item.ContactID})" class="btn btn-default"><i class="fa fa-pencil"></i> Edit </a>
+            <a href="@Url.Action("Delete","ContactInfo",new { id = item.ContactID})" class="btn btn-default"><i class="fa fa-trash"></i> Delete </a>
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        
+    </script>
+}
